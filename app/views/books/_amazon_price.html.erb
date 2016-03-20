@@ -1,0 +1,55 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+		<div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Price Compare</h4>
+        </div>
+      <div class="modal-body"> 
+		<div class="container">
+			<div class="row ">
+				<div class="col-sm-3 amazon-price">
+					<h5>Amazon :</h5>
+			        <p>
+			        	<% price.items.each_with_index do |item, n| %>
+			        		<% @amaz = item.get('OfferSummary/LowestNewPrice/FormattedPrice')%>
+			      			<%=  @amaz %>
+			      			<% break %>
+			    		<% end %>
+			    	</p>
+	    		</div>
+	    		<div class="col-sm-3">
+	    			<h5>BookMate :</h5>
+			        <p>
+			        	<%= book.price %>
+			      			
+			    	</p>
+	    		</div>
+	    	</div>
+		</div>
+      </div>
+		
+			<% if book.price > @amaz.delete( "$" ).to_f %>
+				<div class="modal-footer">
+				 <p> Dont worry we will match the price !</p> 
+				<form action="/order_entries" method="post">
+			    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			    <div class="input-group">
+			      <input value="1" class="form-control" min="1" max="<%=book.quantity%>" type="number" name="order_entry[quantity]" />
+			      <div class="input-group-btn">
+			        <input value="<%= book.id %>" type="hidden" name="order_entry[book_id]">
+			        <input value="<%= @amaz.delete( "$" ).to_f %>" type="hidden" name="order_entry[unit_cost]">
+			        <input type="submit" name="commit" value="Add to Cart with Amazon Price" class="btn btn-primary">
+			      </div>
+			    </div>
+   			</form>
+
+				</div>
+			
+			<% else %>
+				p> We offer the best prices :)</p> 
+			<% end %>
+		
+    </div>
+  </div>
+</div>

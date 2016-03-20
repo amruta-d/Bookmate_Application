@@ -1,0 +1,30 @@
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+
+.img-responsive{
+  width: 250px;
+  height: 350px;
+}
+
+
+
+
+.col-lg-4 {
+    height:380px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    margin: 20px;
+    border-radius: 25px;
+}
+
+.col-lg-1{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.amazon-price{
+  border-right: 1px solid #333;
+}

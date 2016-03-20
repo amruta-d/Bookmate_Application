@@ -1,0 +1,39 @@
+
+<div class="container">
+	<h4>Welcome to your Dashboard</h4>
+	Signed in as <%= current_user.name %>. Not you?
+	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+</div>
+<hr/>
+<div class="container">
+		<div class="">
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active" ><a href="#postings" data-toggle="tab">My Postings</a></li>
+				<li role="presentation" ><a href="#notifications" data-toggle="tab" >My Orders</a></li>
+			  <li role="presentation"><a href="#profile" data-toggle="tab" >Profile</a></li>
+			  <li role="presentation"><a href="#returns" data-toggle="tab" >Returns</a></li>
+			  
+			</ul>
+		</div>
+		<div class="">
+			<div class="tab-content">
+				<div class="tab-pane active" id="postings">
+					<%= render partial: "postings", object: postings , as: 'books' %>
+				</div>
+				<div class="tab-pane" id="notifications">
+					<%= render partial: "orders", object: orders , as: 'orders' %>
+				</div>
+				<div class="tab-pane" id="profile">
+					<%= render 'users/registrations/edit'%>
+				</div>
+				<div class="tab-pane" id="returns">
+					<%= render partial: "returns", object: returns , as: 'order_entries' %>
+				</div>
+			
+			</div>
+			
+		</div>
+
+</div>
+
+
