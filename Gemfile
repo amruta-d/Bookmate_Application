@@ -21,7 +21,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'devise'
 
 #omniauth allow third party login
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 1.3.2'
 
 #=====================================
 # javascript runtime
